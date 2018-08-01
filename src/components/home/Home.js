@@ -47,7 +47,8 @@ class Home extends Component {
 
     selectVideo(video, url) {
         return () => {
-            this.props.changeVideo(video);
+            this.props.changeVideo(video.id);
+            console.log(video.id)
             this.props.history.push({
                 pathname: url
             })

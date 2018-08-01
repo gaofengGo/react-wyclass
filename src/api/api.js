@@ -20,3 +20,13 @@ export const getCarousel = params => {                //用户登录请求
         return Promise.reject(error);
     });
 };
+
+export const getData = params => {
+    return axios.get(`${base}/data`, params).then(res => {
+        return res.data;
+    }, err => {
+        return Promise.reject(err);
+    }).catch((error) => {
+        return Promise.reject(error);
+    })
+}

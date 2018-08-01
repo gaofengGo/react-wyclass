@@ -10,8 +10,8 @@ const mapDispatchToProps = (dispatch) => ({
     // showVideoPlayer: (status) => {
     //     dispatch(showPlayer(status))
     // },
-    changeVideo: (video) => {
-        dispatch(changeVideo(video))
+    changeVideo: (id) => {
+        dispatch(changeVideo(id))
     }
 });
 

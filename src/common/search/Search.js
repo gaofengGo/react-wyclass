@@ -6,7 +6,8 @@ class Search extends Component {
     constructor() {
         super()
         this.state = {
-            search: false
+            search: false,
+            titel: []
         }
     }
     searchEnter() {
@@ -39,7 +40,7 @@ class Search extends Component {
                     <div className="class-search">
                         <div className="search">
                             <Search className="Search"
-                            placeholder="老路"
+                            placeholder="一辈子"
                             onSearch={value => console.log(value)}
                             style={{ width: 300 }}
                             />
