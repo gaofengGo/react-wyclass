@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TabBar from '@/common/tabbar/TabBar'
 import Search from '@/common/search/Search'
 
 class Recess extends Component {
@@ -7,6 +8,7 @@ class Recess extends Component {
             <div className="recess">
             <Search />
             课间
+            <TabBar />
             </div>
         )
     }

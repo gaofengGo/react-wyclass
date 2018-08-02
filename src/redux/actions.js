@@ -8,8 +8,8 @@ export function removeVideo (name) {
     return { type: ActionTypes.REMOVE_VIDEO, name}
 }
 
-export function addVideo (name) {
-    return { type: ActionTypes.ADD_VIDEO, name}
+export function addVideo (up) {
+    return { type: ActionTypes.ADD_VIDEO, up}
 }
 
 // export function showPlayer (showStaus) {

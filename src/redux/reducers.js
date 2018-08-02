@@ -29,9 +29,10 @@ function id(id = initialState.id, action) {
 function videos(videos = initialState.videos, action) {
     switch (action.type) {
         case ActionTypes.ADD_VIDEO:
-            return videos.push(action.name);
+            videos.push(action.up)
+            return videos;
         case ActionTypes.REMOVE_VIDEO:
-            return videos.filter(video => video.name !== action.name);
+            return videos.filter(video => video !== action.name);
         default: 
             return videos
     }
