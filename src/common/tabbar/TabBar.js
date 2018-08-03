@@ -27,7 +27,7 @@ class TabBar extends Component {
                 </div>
                 <div className="tab-item">
                     <NavLink to="/my" className="nav-link">
-                        <Icon type="user-add" style={{ fontSize: 27 }} />
+                        <Icon type="user" style={{ fontSize: 27 }} />
                         <div>我</div>
                     </NavLink>
                 </div>

@@ -39,10 +39,11 @@ class Search extends Component {
                 {this.state.search &&
                     <div className="class-search">
                         <div className="search">
-                            <Search className="Search"
+                            <Search 
                             placeholder="一辈子"
                             onSearch={value => console.log(value)}
                             style={{ width: 300 }}
+                            autoFocus
                             />
                             <div className="cancel-button" onClick={this.searchOut()}>取消</div>
                         </div>

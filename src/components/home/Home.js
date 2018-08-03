@@ -21,21 +21,20 @@ class Home extends Component {
     }
     componentDidMount() {
         getCarousel().then(res => {
-            if (res) {
                     this.setState({
                         sliderList: res
-                    }, () => {
+                    },() => {
                         if (!this.sliderSwiper)
-                            this.sliderSwiper = new Swiper('.slider-container', {
-                                loop: true,
-                                autoplay: 3000,
-                                autoplayDisableOnInteraction: false,
-                                pagination: '.swiper-pagination'
-                            })
-                    })
-                
-            }
-        });
+                        this.sliderSwiper = new Swiper('.slider-container', {
+                            loop: true,
+                            autoplay: 3000,
+                            autoplayDisableOnInteraction: false,
+                            pagination: '.swiper-pagination'
+                        })
+                    }
+                )
+            
+        })
         getRecommend().then(res => {
             if (res) {
                 this.setState({
@@ -56,32 +55,27 @@ class Home extends Component {
         }
     }
 
-    toLink(linkUrl) {
-        return () => {
-            window.location.href = linkUrl;
-        }
-    }
     render() {
         const {match} = this.props
         const titles = this.state.titles.map(title => {
             const small = title.title.map(item => {
                 return (
-                    <div className="small" key={item.id}>
-                        <a onClick={this.selectVideo(item,`${'/home/' + item.id}`)}>
+                    <div className="home-small" key={item.id}>
+                        <a onClick={this.selectVideo(item,`${match.url + '/' + item.id}`)}>
                             <img src={item.img} />
-                            <div className="text">{item.text}</div>
+                            <div className="home-text">{item.text}</div>
                         </a>
                     </div>
                 )
             })
             return (
-                <div className="big" key={title.id}>
-                    <div className="tag">
-                        <span className="border">
+                <div className="home-big" key={title.id}>
+                    <div className="home-tag">
+                        <span className="home-border">
                         {title.name}
                         </span>
                     </div>
-                    <div className="title">
+                    <div className="home-title">
                         {small}
                     </div>
                 </div>
@@ -98,7 +92,8 @@ class Home extends Component {
                                     this.state.sliderList.map(slider => {
                                         return (
                                             <div className="swiper-slide" key={slider.id}>
-                                                <a onClick={this.toLink(slider.linkUrl)} className="slider-nav">
+                                                <a onClick={this.selectVideo(slider,`${match.url + '/' + slider.id}`)}
+                                                 className="slider-nav">
                                                     <img src={slider.picUrl} width="100%" height="100%" alt="推荐" />
                                                 </a>
                                             </div>
@@ -108,7 +103,7 @@ class Home extends Component {
                             </div>
                             <div className="swiper-pagination"></div>
                         </div>
-                        
+
                         <ul className="home-tab">
                             <li className="tab">
                             <Icon type="coffee" style={{ fontSize: 27, color: '#62b4ff'}}/>
@@ -134,7 +129,7 @@ class Home extends Component {
                     </div>
                 </Scroll>
                 <TabBar />
-                <Route path = {`${'/home/:id'}`} component = {Play}/>
+                <Route path = {`${match.url + '/:id'}`} component = {Play}/>
             </div>
         )
     }
