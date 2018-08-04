@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 import Header from '@/common/header/Header'
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
+// import { Toast } from 'antd-mobile'
 import './login.styl'
+import { toastIt } from '@/common/toast/toast';
 
 const FormItem = Form.Item;
+
+// function successToast() {
+//     Toast.success('登录成功!', 1);
+// }
 
 class Login extends Component {
     handleSubmit = (e) => {
@@ -20,6 +26,8 @@ class Login extends Component {
         if (values.userName === '123') {
             if(values.password === '123') {
                 this.props.LoginIn(true)
+                // successToast()
+                toastIt('登录成功', 1500,{fontSize: '16px'})
                 window.history.back();
             } else {
                 alert('密码错误')

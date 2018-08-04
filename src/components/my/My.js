@@ -106,6 +106,7 @@ class My extends Component {
                     <button className="NO">发表</button>
                 </div>
                 <div className="my-background"></div>
+                
                 <TabBar />
             </div>
         )

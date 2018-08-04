@@ -3,6 +3,7 @@ import Header from '@/common/header/Header'
 import { Redirect} from 'react-router-dom'
 import './play.styl'
 import { getData } from '@/api/api';
+import { toastIt } from '@/common/toast/toast';
 
 class Play extends Component {
     constructor(props) {
@@ -66,6 +67,7 @@ class Play extends Component {
                 })
                 this.props.addVideo(data.up)
                 console.log(this.props.videos)
+                toastIt('订阅成功', 1500,{fontSize: '16px'})
             } else {
                 this.setState({redirect: true})
             }
@@ -80,7 +82,7 @@ class Play extends Component {
                 data: data
             })
             this.props.removeVideo(data.up)
-            const arr = this.props.videos
+            toastIt('取消订阅', 1500,{fontSize: '16px'})
         }
     }
 
@@ -95,9 +97,8 @@ class Play extends Component {
         return (
             <div className="class-play">
                 <Header title={data.Course}/>
-                <video src="http://ugcyd.qq.com/c0367mes4na.mp4?sdtfrom=v1010&guid=46c7c3bb9552044797e6c15ca0d486fc&vkey=2069396B81EEB84E44C631F01E54618C83742B6439394ED0A475D66DDFFDF4A66098CF8B91571B415CA1E9388404BB940C6BDA656CE9E612DBA2AA944C7EC761BF63B30E6FD19C34091BA03723AA91C7BD63793855C79B0CA648BD8CAAAAF0E49E91283BC9CCC23D433F7C2BBE095E7EF7C3CDEBAC1CCEA4"
-                // autoplay="autoplay"
-                 controls="controls"  className="videoPlay"></video>
+                <video src="http://117.21.186.14/vcloud1049.tc.qq.com/1049_M0118400001H0VZ02yMnL41001152843.f40.mp4?vkey=0B4F538814225890BCEBC7D96E88E86DF4BCACDD16A28A4B2D619BC90369932D40079D468A62F5968FB59B1FFF9DC4B9EE39307ED8F4AFA704B526A9CF5721EDAEC10717A5269DEA454B028B52697508F35C5181647A271C"
+                autoplay="autoplay" controls="controls"  className="videoPlay"></video>
                 <div className="up">
                     <img className="hd" src={data.photo} alt=""/>
                     <div className="bd">
