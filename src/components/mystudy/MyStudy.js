@@ -39,7 +39,7 @@ class MyStudy extends Component {
             })
         })
     }
-    
+
     componentDidMount() {
         getCarousels().then(res => {
             this.setState({
@@ -60,6 +60,9 @@ class MyStudy extends Component {
             const names = this.props.videos
             // console.log(names)
             const arr = []
+            if (names.length === 0) {
+                this.setState({login: false})
+            }
             for (var key in names) {
                 for (var index in res) {
                     if (res[index].up === names[key])
@@ -69,7 +72,7 @@ class MyStudy extends Component {
             // console.log(arr)
             this.setState({
                 videos: arr,
-                refreshScroll2: true
+                refreshScroll: true
             })
         })
     }
@@ -94,13 +97,16 @@ class MyStudy extends Component {
                         <div className="mystudy-name">{item.up}</div>
                     </div>
                     <a onClick={this.selectVideo(item, `${match.url + '/' + item.id}`)}>
-                        <div className="mystudy-text" style={{ background: `url(${item.img})`,backgroundSize: 'cover' }}>
+                        <div className="mystudy-text" style={{ background: `url(${item.img})`, backgroundSize: 'cover' }}>
                             <span> {item.Course} </span>
                         </div>
                     </a>
                 </div>
             )
         })
+
+        const login = <div className="mystudy_text">您还没有订阅任何人!</div>
+        const container = this.state.login? videos: login
         return (
             <div className="class-mystudy">
                 <Search />
@@ -146,12 +152,12 @@ class MyStudy extends Component {
                         </div>
 
                         <div className="content">
-                            {videos}
+                            {container}
                         </div>
                     </div>
                 </Scroll>
                 <TabBar />
-                <Route path = {`${match.url + '/:id'}`} component = {Play}/>
+                <Route path={`${match.url + '/:id'}`} component={Play} />
             </div>
         )
     }
