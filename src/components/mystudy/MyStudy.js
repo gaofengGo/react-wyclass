@@ -26,6 +26,11 @@ class MyStudy extends Component {
             const names = this.props.videos
             // console.log(names)
             const arr = []
+            if (names.length === 0) {
+                this.setState({login: false})
+            } else {
+                this.setState({login: true})
+            }
             for (var key in names) {
                 for (var index in res) {
                     if (res[index].up === names[key])
@@ -62,6 +67,8 @@ class MyStudy extends Component {
             const arr = []
             if (names.length === 0) {
                 this.setState({login: false})
+            } else {
+                this.setState({login: true})
             }
             for (var key in names) {
                 for (var index in res) {
