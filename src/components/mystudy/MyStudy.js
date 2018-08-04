@@ -22,7 +22,6 @@ class MyStudy extends Component {
     }
     componentWillReceiveProps() {
         getData().then(res => {
-            // console.log(res)
             const names = this.props.videos
             // console.log(names)
             const arr = []
