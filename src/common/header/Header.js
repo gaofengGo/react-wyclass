@@ -10,7 +10,7 @@ class Header extends React.Component {
         return (
             <div className="class-header">
 	            <span className="header-back" onClick={this.handleClick}>
-                <Icon type="left-circle" />
+                <Icon type="left" />
 	            </span>
                 <div className="header-title">
                     {this.props.title}

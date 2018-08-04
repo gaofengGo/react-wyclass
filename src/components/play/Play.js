@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Header from '@/common/header/Header'
+import { Redirect} from 'react-router-dom'
 import './play.styl'
 import { getData } from '@/api/api';
 
@@ -43,6 +44,7 @@ class Play extends Component {
                     for (var key in ups) {
                         if(ups[key] === data.up) {
                            data.fous = true
+                           data.num2+=1
                         } 
                     }
                     this.setState({
@@ -55,14 +57,18 @@ class Play extends Component {
  
     fous() {
         return () => {
-            const data = this.state.data
-            data.fous = true
-            data.num2+=1
-            this.setState({
-                data: data
-            })
-            this.props.addVideo(data.up)
-            console.log(this.props.videos)
+            if(this.props.login){
+                const data = this.state.data
+                data.fous = true
+                data.num2+=1
+                this.setState({
+                    data: data
+                })
+                this.props.addVideo(data.up)
+                console.log(this.props.videos)
+            } else {
+                this.setState({redirect: true})
+            }
         }
     }
     fousOut() {
@@ -83,9 +89,12 @@ class Play extends Component {
         const NO = <button className="NO" onClick={this.fous()}>订阅</button>
         const button = this.state.data.fous ? YES : NO;
         const data = this.state.data
+        if(this.state.redirect){
+            return <Redirect push to="/login" />;
+        }
         return (
             <div className="class-play">
-                <Header/>
+                <Header title={data.Course}/>
                 <video src="http://ugcyd.qq.com/c0367mes4na.mp4?sdtfrom=v1010&guid=46c7c3bb9552044797e6c15ca0d486fc&vkey=2069396B81EEB84E44C631F01E54618C83742B6439394ED0A475D66DDFFDF4A66098CF8B91571B415CA1E9388404BB940C6BDA656CE9E612DBA2AA944C7EC761BF63B30E6FD19C34091BA03723AA91C7BD63793855C79B0CA648BD8CAAAAF0E49E91283BC9CCC23D433F7C2BBE095E7EF7C3CDEBAC1CCEA4"
                 // autoplay="autoplay"
                  controls="controls"  className="videoPlay"></video>

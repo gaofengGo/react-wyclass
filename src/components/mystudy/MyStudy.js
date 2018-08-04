@@ -35,7 +35,7 @@ class MyStudy extends Component {
             // console.log(arr)
             this.setState({
                 videos: arr,
-                refreshScroll2: true
+                refreshScroll: true
             })
         })
     }

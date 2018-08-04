@@ -12,6 +12,10 @@ export function addVideo (up) {
     return { type: ActionTypes.ADD_VIDEO, up}
 }
 
-// export function showPlayer (showStaus) {
-//     return { type: ActionTypes.SHOW_PLAYER, showStaus}
-// }
+export function LoginIn (loginStatus) {
+    return { type: ActionTypes.LOGIN_IN, loginStatus}
+}
+
+export function LoginOut (login) {
+    return { type: ActionTypes.LOGIN_OUT, login}
+}

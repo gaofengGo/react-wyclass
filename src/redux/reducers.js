@@ -4,18 +4,20 @@ import * as ActionTypes from './actionsTypes'
 const initialState = {
     videos: [],         //订阅的全部
     id: null,          //当前播放
-    // showStatus: false,  //播放状态
+    loginStatus: false,  //登录状态
     logging: false      //登录状态
 }
 
-// function showStatus(showStatus = initialState.showStatus, action) {
-//     switch (action.type) {
-//         case ActionTypes.SHOW_PLAYER:
-//             return action.showStatus;
-//         default:
-//             return showStatus;
-//     }
-// }
+function loginStatus(loginStatus = initialState.loginStatus, action) {
+    switch (action.type) {
+        case ActionTypes.LOGIN_IN:
+            return action.loginStatus;
+        case ActionTypes.LOGIN_OUT:
+            return action.login;
+        default:
+            return loginStatus;
+    }
+}
 
 function id(id = initialState.id, action) {
     switch(action.type){
@@ -41,7 +43,7 @@ function videos(videos = initialState.videos, action) {
 const reducer = combineReducers({
     id,
     videos,
-    // showStatus
+    loginStatus
 })
 
 export default reducer

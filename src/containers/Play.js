@@ -4,7 +4,8 @@ import Play from '@/components/play/Play'
 
 const mapStateToProps = (state) => ({
     id: state.id,
-    videos: state.videos
+    videos: state.videos,
+    login: state.loginStatus
 })
 
 const mapDispatchToProps = (dispatch) => ({

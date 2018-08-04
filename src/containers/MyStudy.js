@@ -3,7 +3,8 @@ import { changeVideo } from '@/redux/actions'
 import MyStudy from '@/components/mystudy/MyStudy'
 
 const mapStateToProps = (state) => ({
-    videos: state.videos
+    videos: state.videos,
+    login: state.loginStatus
 })
 
 const mapDispatchToProps = (dispatch) => ({
