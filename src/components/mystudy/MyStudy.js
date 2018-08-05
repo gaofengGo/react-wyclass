@@ -17,6 +17,7 @@ class MyStudy extends Component {
             sliderList: [],
             videos: [],
             refreshScroll: false,
+            login: false,
             titles: []
         }
     }
@@ -25,10 +26,12 @@ class MyStudy extends Component {
             const names = this.props.videos
             // console.log(names)
             const arr = []
-            if (names.length === 0) {
-                this.setState({login: false})
-            } else {
-                this.setState({login: true})
+            if (this.props.login) {
+                if (names.length === 0) {
+                    this.setState({login: false})
+                } else {
+                    this.setState({login: true})
+                }
             }
             for (var key in names) {
                 for (var index in res) {
@@ -64,10 +67,12 @@ class MyStudy extends Component {
             const names = this.props.videos
             // console.log(names)
             const arr = []
-            if (names.length === 0) {
-                this.setState({login: false})
-            } else {
-                this.setState({login: true})
+            if (this.props.login) {
+                if (names.length === 0) {
+                    this.setState({login: false})
+                } else {
+                    this.setState({login: true})
+                }
             }
             for (var key in names) {
                 for (var index in res) {

@@ -90,6 +90,7 @@ class Play extends Component {
         const YES = <button className="YES" onClick={this.fousOut()}>已订阅</button>
         const NO = <button className="NO" onClick={this.fous()}>订阅</button>
         const button = this.state.data.fous ? YES : NO;
+        const login = this.props.login ? button : NO;
         const data = this.state.data
         if(this.state.redirect){
             return <Redirect push to="/login" />;
@@ -109,7 +110,7 @@ class Play extends Component {
                             <div className="two">{data.num2}</div>
                         </div>
                     </div>
-                    <div className="ft">{button}</div>
+                    <div className="ft">{login}</div>
                 </div>
                 <div className="videoIntroduction">
                     <div className="hd">{data.Course}</div>
